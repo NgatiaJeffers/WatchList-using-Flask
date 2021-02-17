@@ -1,3 +1,11 @@
+{% extends 'base.html'%}
+{% import 'macros.html' as macro%}
+
+<!-- Styles block -->
+{% block styles%}
+    {{ super() }}
+    <link rel="stylesheet" href="{{url_for('static',filename='css/index.css')}}">
+{% endblock %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,6 +18,8 @@
     {% endif %}
 </head>
 <body>
+    <!-- Content block -->
+    {% block content %}
     
     <!-- Popular Movie Section -->
     <h3> Popular </h3>
@@ -18,5 +28,23 @@
         <li>{{ popular_movie.title }}</li>
         {% endof %}
     </ul>
+
+    <!-- Upcoming Movies -->
+    <h3> Upcoming Movies </h3>
+    <ul>
+        {% for upcoming_movies in upcoming %}
+        <li>{{ upcoming_movie.title }}</li>
+        {% endfor %}
+    </ul>
+
+    <!-- Now Showing Movies -->
+    <h3> Now Showing </h3>
+    <ul>
+        {% for now_showing_movie in now_showing %}
+        <li>{{ now_showing_movie.title }}</li>
+        {% endfor %}
+    </ul>
+
+    {% endlock %}
 </body>
 </html>

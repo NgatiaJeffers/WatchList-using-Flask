@@ -1,4 +1,4 @@
-from app.instance.config import MOVIE_API_KEY
+# from app.instance.config import MOVIE_API_KEY
 
 
 class Config:
@@ -15,7 +15,7 @@ class ProdConfig(Config):
         Config: The parent configuration class with General configuration settings
     '''
 
-    pass
+    MOVIE_API_KEY = '7a3b260a2b4a7805cc684ef8de37cf00'
 
 class DevConfig(Config):
     '''
