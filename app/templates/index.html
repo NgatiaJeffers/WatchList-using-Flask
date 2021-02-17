@@ -11,5 +11,12 @@
 </head>
 <body>
     
+    <!-- Popular Movie Section -->
+    <h3> Popular </h3>
+    <ul>
+        {% for popular_movie in popular %}
+        <li>{{ popular_movie.title }}</li>
+        {% endof %}
+    </ul>
 </body>
 </html>
