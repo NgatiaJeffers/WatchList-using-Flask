@@ -6,6 +6,7 @@
     {{ super() }}
     <link rel="stylesheet" href="{{url_for('static',filename='css/main.css')}}">
 {% endblock %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -22,30 +23,80 @@
     {% block content %}
 
     <!-- Search Section -->
-    <div class="container justify-content-center">
+    <div class="container mar-form">
         <form>
-            <input type="text" name="movie_query" placeholder="Search for a Movie" class="form-control">
-            <input type="submit"  value="Submit" class="btn btn-primary">
+                <div class="row mb-4">
+                    <div class="form-group col-md-9">
+                        <input id="exampleFormControlInput5" type="text" name="movie_query" placeholder="Search for a Movie" class="form-control form-control-underlined">
+                    </div>
+                    <div class="form-group col-md-3">
+                        <button type="submit" value="Submit" class="btn btn-primary rounded-pill btn-block shadow-sm">Search</button>
+                    </div>
+                </div>
         </form>
     
     </div>
     
     <!-- Popular movie -->
-    <h3 style="text-align: center"> Popular Movies</h3>
-    <ul>
-        {{ macro.displayMovieList(popular)}}
-    </ul>
-    <!-- Upcoming movie  -->
-    <h3 style="text-align: center"> Upcoming Movies </h3>
-    <ul>
-        {{ macro.displayMovieList(upcoming)}}
-    </ul>
+    <div class="title text-center">
+        <h3> Popular Movies</h3>
+    </div>
+    <div class="container">
+        <div class="row">
+            {{ macro.displayMovieList(popular)}}
+        </div>
+    </div>
+
+    <!-- Upcoming Movies -->
+    <div class="title text-center">
+        <h3> Upcoming Movies </h3>
+    </div>
+    <div class="container">
+        <div class="row">
+            {{ macro.displayMovieList(upcoming)}}
+        </div>
+    </div>
+
     <!-- Now showing movie -->
-    <h3 style="text-align: center">Now Showing</h3>
-    <ul>
-        {{ macro.displayMovieList(now_showing)}}
-    </ul>
+    <div class="title text-center">
+        <h3>Now Showing</h3>
+    </div>
+    <div class="container">
+        <div class="row">
+            {{ macro.displayMovieList(now_showing)}}
+        </div>
+    </div>
 
     {% endblock %}
+
+    <style>
+.search {
+    align-items: center;
+}
+
+
+.form-control:focus {
+    box-shadow: none;
+}
+
+
+.form-control-underlined {
+    border-width: 0;
+    border-bottom-width: 1px;
+    border-radius: 0;
+    padding-left: 0;
+}
+
+
+.form-control::placeholder {
+    font-size: 0.95rem;
+    color: #aaa;
+    font-style: italic;
+}
+
+.mar-form {
+    margin-top: 15px;
+}
+    </style>
 </body>
 </html>

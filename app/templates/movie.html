@@ -1,15 +1,22 @@
 {% extends 'base.html'%}
 {% import 'macros.html' as macro%}
+
+<!-- Styles block -->
+{% block styles%}
+    {{ super() }}
+    <link rel="stylesheet" href="{{url_for('static',filename='css/main.css')}}">
+{% endblock %}
+
 <!-- Content block -->
 {% block content %}
 <div class="container">
 
     <!-- Poster background -->
     <div class="row">
-        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 posterPath" style="background: url({{movie.poster}}) no-repeat center center">
+        <div class="col-md-6 posterPath" style="background: url({{movie.poster}}) no-repeat center center">
         </div>
 
-        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 movie-details">
+        <div class="col-md-6 movie-details">
             <h3>{{ movie.title }}</h3>
 
             <p class="overview"> {{ movie.overview }}</p>
@@ -24,7 +31,8 @@
         <hr>
 
         {% if reviews %}
-        {{macro.displayReviews(reviews)}}
+            {{macro.displayReviews(reviews)}}
+
         {% else %}
         <h3 class="text-center"> This movie has no reviews </h3>
 

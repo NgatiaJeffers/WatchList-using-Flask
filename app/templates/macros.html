@@ -1,12 +1,20 @@
 {% macro displayMovieList(movie_list) %}
 
     {% for movie in movie_list %}
-        <div class="col-xs-12 col-sm-4 col-md-2 col-lg-2 movie-card">
-            <img src="{{ movie.poster }}" alt="{{ movie.title }} poster" class="img-responsive">
-            <li class="text-center">
-                <a href="/movie/{{movie.id}}">{{ movie.title|truncate(10)}}</a>
-            </li>
-        </div>
+            <!-- Gallery item -->
+            <div class="col-xl-3 col-lg-4 col-md-6 mb-4 mt-4">
+                <div class="bg-white rounded shadow-sm"><img src="{{ movie.poster }}" class="card-img-top img-responsive" alt="{{ movie.title }} poster"/>
+                <div class="p-4">
+                    <h6 class="card-title"> <a href="/movie/{{movie.id}}">{{ movie.title|truncate(20)}}</a> </h6>
+                    <p class="small text-muted mb-0">{{ movie.overview|truncate(50) }}</p>
+                    <div class="d-flex align-items-center justify-content-between rounded-pill bg-light px-3 py-2 mt-4">
+                    <p class="small mb-0"><span class="font-weight-bold">{{ movie.vote_average }}ratings</span></p>
+                    <div class="badge badge-danger px-3 rounded-pill font-weight-normal">{{ movie.vote_count}} V</div>
+                    </div>
+                </div>
+                </div>
+            </div>
+            <!-- End -->
 
     {% endfor %}
 
