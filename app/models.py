@@ -88,19 +88,19 @@ class Role(db.Model):
     def __repr__(self):
         return f'User {self.name}'
 
-class Review(db.model):
+class Review(db.Model):
 
-    __tablename__ == 'reviews'
+    __tablename__ = 'reviews'
 
     id = db.Column(db.Integer, primary_key = True)
     movie_id = db.Column(db.Integer)
     movie_title = db.Column(db.String)
-    image_path = db.Column(db.Stirng)
+    image_path = db.Column(db.String)
     movie_review = db.Column(db.String)
     posted = db.Column(db.DateTime, default = datetime.utcnow)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
 
-    def save_reviews(self):
+    def save_review(self):
         db.session.add(self)
         db.session.commit()
 

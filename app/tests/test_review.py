@@ -1,6 +1,5 @@
 import unittest
 from app.models import Review, User
-from app import db
 
 class ReviewTest(unittest.TestCase):
     '''
@@ -13,18 +12,20 @@ class ReviewTest(unittest.TestCase):
         '''
         self.user_james = User(username = 'James', password = 'potato', email = 'james@gmail.com')
         self.new_review = Review(movie_id = 1234, movie_title = 'Python Must Be Crazy Review', image_path = 'https://image.tmdb.org/t/p/w500/jdjdjdjn', 
-        movie_review = 'This was whack', user = self.user_James)
+        movie_review = 'This was whack', user = self.user_james)
 
     def tearDown(self):
-        Review.query.delete()
-        User.query.delete()
+        Review.Clear_reviews()
+
+    def test_instance(self):
+        self.assertTrue(isinstance(self.new_review, Review))
 
     def test_check_instance_variables(self):
         self.assertEquals(self.new_review.movie_id, 1234)
         self.assertEquals(self.new_review.movie_title, 'Python Must Be Crazy Review')
         self.assertEquals(self.new_review.image_path, 'https://image.tmdb.org/t/p/w500/jdjdjdjn')
         self.assertEquals(self.new_review.movie_review, 'This was whack')
-        self.assertEquals(self.new_review.user, self.user_James)
+        self.assertEquals(self.new_review.user, self.user_james)
 
     def test_save_review(self):
         self.new_review.save_review()
